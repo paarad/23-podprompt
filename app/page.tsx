@@ -73,18 +73,18 @@ export default function Home() {
 				<p className="mt-3 text-sm sm:text-base opacity-80">Break down podcasts into summaries, highlights, and social-ready content.</p>
 			</section>
 
-			<section className="rounded-2xl border border-black/10 dark:border-white/10 p-3 sm:p-4 bg-white dark:bg-black/20">
-				<div className="flex flex-col gap-2">
+			<section className="rounded-2xl border border-black/20 dark:border-white/25 p-5 sm:p-6 bg-white dark:bg-black/20">
+				<div className="flex flex-col gap-3">
 					<div className="flex items-stretch gap-2">
 						<input
 							type="url"
 							placeholder="Paste a direct audio URL (mp3, m4a)"
 							value={url}
 							onChange={(e) => setUrl(e.target.value)}
-							className="flex-1 rounded-md border border-black/10 dark:border-white/15 p-2 text-sm"
+							className="flex-1 rounded-md border border-black/20 dark:border-white/25 p-2.5 text-sm"
 						/>
 						<input id="file-input" type="file" accept="audio/*" onChange={(e) => setFile(e.target.files?.[0] || null)} className="hidden" />
-						<label htmlFor="file-input" className="inline-flex items-center rounded-md border border-black/10 dark:border-white/15 px-3 py-2 text-sm cursor-pointer hover:bg-black/5 dark:hover:bg-white/10">Upload</label>
+						<label htmlFor="file-input" className="inline-flex items-center rounded-md border border-black/20 dark:border-white/25 px-3.5 py-2 text-sm cursor-pointer hover:bg-black/5 dark:hover:bg-white/10">Upload</label>
 						<button
 							onClick={handleProcess}
 							disabled={loading}
