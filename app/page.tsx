@@ -67,44 +67,33 @@ export default function Home() {
 	}
 
 	return (
-		<div className="font-sans min-h-screen p-6 sm:p-10 max-w-5xl mx-auto flex flex-col gap-6">
-			<header className="flex items-center justify-between">
-				<h1 className="text-2xl sm:text-3xl font-semibold">PodPrompt</h1>
-				<a className="text-sm underline opacity-80" href="https://github.com/paarad/23-podprompt" target="_blank" rel="noreferrer">Star on GitHub</a>
-			</header>
+		<div className="font-sans min-h-screen p-6 sm:p-10 max-w-4xl mx-auto flex flex-col gap-8">
+			<section className="pt-8 sm:pt-16 pb-2 sm:pb-4 text-center">
+				<h1 className="text-4xl sm:text-6xl font-bold tracking-tight">PodPrompt</h1>
+				<p className="mt-3 text-sm sm:text-base opacity-80">Break down podcasts into summaries, highlights, and social-ready content.</p>
+			</section>
 
-			<section className="rounded-xl border border-black/10 dark:border-white/10 p-4 sm:p-6 bg-white dark:bg-black/20">
-				<h2 className="text-lg font-medium mb-4">Upload audio or paste a direct link</h2>
-				<div className="grid gap-3 sm:grid-cols-2">
-					<div className="flex flex-col gap-2">
-						<label className="text-sm opacity-80">Audio file</label>
-						<input
-							type="file"
-							accept="audio/*"
-							onChange={(e) => setFile(e.target.files?.[0] || null)}
-							className="block w-full rounded-md border border-black/10 dark:border-white/15 p-2 text-sm"
-						/>
-					</div>
-					<div className="flex flex-col gap-2">
-						<label className="text-sm opacity-80">Direct audio URL</label>
+			<section className="rounded-2xl border border-black/10 dark:border-white/10 p-3 sm:p-4 bg-white dark:bg-black/20">
+				<div className="flex flex-col gap-2">
+					<div className="flex items-stretch gap-2">
 						<input
 							type="url"
-							placeholder="https://...mp3"
+							placeholder="Paste a direct audio URL (mp3, m4a)"
 							value={url}
 							onChange={(e) => setUrl(e.target.value)}
-							className="block w-full rounded-md border border-black/10 dark:border-white/15 p-2 text-sm"
+							className="flex-1 rounded-md border border-black/10 dark:border-white/15 p-2 text-sm"
 						/>
+						<input id="file-input" type="file" accept="audio/*" onChange={(e) => setFile(e.target.files?.[0] || null)} className="hidden" />
+						<label htmlFor="file-input" className="inline-flex items-center rounded-md border border-black/10 dark:border-white/15 px-3 py-2 text-sm cursor-pointer hover:bg-black/5 dark:hover:bg-white/10">Upload</label>
+						<button
+							onClick={handleProcess}
+							disabled={loading}
+							className="inline-flex items-center rounded-md bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm disabled:opacity-60"
+						>
+							{loading ? "Processing..." : "Go"}
+						</button>
 					</div>
-				</div>
-
-				<div className="mt-4 flex items-center gap-3">
-					<button
-						onClick={handleProcess}
-						disabled={loading}
-						className="inline-flex items-center gap-2 rounded-md bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm disabled:opacity-60"
-					>
-						{loading ? "Processing..." : "Transcribe & Summarize"}
-					</button>
+					{file && <div className="text-xs opacity-70">Selected: {file.name}</div>}
 					{error && <span className="text-sm text-red-600">{error}</span>}
 				</div>
 			</section>
