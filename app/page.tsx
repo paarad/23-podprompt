@@ -98,6 +98,21 @@ export default function Home() {
 				</div>
 			</section>
 
+			<section className="grid gap-4 sm:gap-6 sm:grid-cols-3">
+				<div className="rounded-xl border border-black/10 dark:border-white/10 p-4 bg-white dark:bg-black/20">
+					<h3 className="font-medium">Transcribe</h3>
+					<p className="text-sm opacity-80 mt-1">Upload audio or paste a link. We transcribe with Whisper for accurate text.</p>
+				</div>
+				<div className="rounded-xl border border-black/10 dark:border-white/10 p-4 bg-white dark:bg-black/20">
+					<h3 className="font-medium">Summarize</h3>
+					<p className="text-sm opacity-80 mt-1">Get concise key points, highlights, and optional timestamped notes.</p>
+				</div>
+				<div className="rounded-xl border border-black/10 dark:border-white/10 p-4 bg-white dark:bg-black/20">
+					<h3 className="font-medium">Repurpose</h3>
+					<p className="text-sm opacity-80 mt-1">Generate tweet threads, promo captions, and SEO titles instantly.</p>
+				</div>
+			</section>
+
 			{transcript && (
 				<section className="rounded-xl border border-black/10 dark:border-white/10 p-4 sm:p-6 bg-white dark:bg-black/20">
 					<div className="flex items-center justify-between mb-3">
